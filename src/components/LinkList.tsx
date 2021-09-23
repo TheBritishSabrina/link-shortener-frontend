@@ -42,8 +42,8 @@ export default function LinkList(): JSX.Element {
           <ul>
             {linkList.map((element, index) => (
               <li key={index} className="link">
-                <a href={element.newLink}>{element.newLink} </a> -{" "}
-                <a href={element.oldLink}>{element.oldLink}</a>
+                <a href={element.newlink}>{element.newlink} </a> -{" "}
+                <a href={element.oldlink}>{element.oldlink}</a>
               </li>
             ))}
           </ul>

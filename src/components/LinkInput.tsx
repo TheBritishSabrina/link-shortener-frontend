@@ -2,6 +2,7 @@ import { useState } from "react";
 
 export default function LinkInput(): JSX.Element {
   const [newLink, setNewLink] = useState<string>("");
+  const [shortenedLink, setShortenedLink] = useState<string>("");
 
   const handleClick = async () => {
     try {
@@ -15,6 +16,10 @@ export default function LinkInput(): JSX.Element {
           body: JSON.stringify(body),
         }
       );
+      const jsonBody = await response.json();
+      setShortenedLink(jsonBody.newlink);
+      console.log(jsonBody);
+      // DO SOMETHING WITH THE RESPONSE - show new link
     } catch (err) {
       console.log(err);
     }

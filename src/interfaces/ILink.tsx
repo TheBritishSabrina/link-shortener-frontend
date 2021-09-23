@@ -1,5 +1,5 @@
 export interface ILink {
   id: number;
-  oldLink: string;
-  newLink: string;
+  oldlink: string;
+  newlink: string;
 }
