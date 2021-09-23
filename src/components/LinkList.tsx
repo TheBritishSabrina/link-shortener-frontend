@@ -1,20 +1,11 @@
 import { useEffect, useState } from "react";
 import { ILink } from "../interfaces/ILink";
 
-// const fakeData: ILink[] = [
-//   {
-//     id: 1,
-//     oldLink: "someoldlink.com",
-//     newLink: "somenewlink.com",
-//   },
-//   {
-//     id: 2,
-//     oldLink: "someotheroldlink.com",
-//     newLink: "someothernewlink.com",
-//   },
-// ];
+type PropType = {
+  newLink: string;
+};
 
-export default function LinkList(): JSX.Element {
+export default function LinkList(props: PropType): JSX.Element {
   const [linkList, setLinkList] = useState<ILink[]>();
 
   const getLinks = async () => {
@@ -32,10 +23,10 @@ export default function LinkList(): JSX.Element {
 
   useEffect(() => {
     getLinks();
-  }, []);
+  }, [props.newLink]);
 
   return (
-    <section>
+    <section className="link-list">
       {linkList && (
         <>
           <h2>Past links</h2>

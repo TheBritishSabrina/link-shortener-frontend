@@ -7,8 +7,8 @@ export default function MainContent(): JSX.Element {
 
   return (
     <main>
-      <LinkInput />
-      <LinkList />
+      <LinkInput newLink={newLink} setNewLink={setNewLink} />
+      <LinkList newLink={newLink} />
     </main>
   );
 }

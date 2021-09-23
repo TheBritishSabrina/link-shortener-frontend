@@ -1,8 +1,14 @@
 import { useState } from "react";
 
-export default function LinkInput(): JSX.Element {
-  const [newLink, setNewLink] = useState<string>("");
+type PropType = {
+  newLink: string;
+  setNewLink: React.Dispatch<React.SetStateAction<string>>;
+};
+
+export default function LinkInput(props: PropType): JSX.Element {
   const [shortenedLink, setShortenedLink] = useState<string>("");
+
+  const newLink = props.newLink;
 
   const handleClick = async () => {
     try {
@@ -18,23 +24,33 @@ export default function LinkInput(): JSX.Element {
       );
       const jsonBody = await response.json();
       setShortenedLink(jsonBody.newlink);
-      console.log(jsonBody);
-      // DO SOMETHING WITH THE RESPONSE - show new link
     } catch (err) {
       console.log(err);
     }
 
-    setNewLink(""); // should I wait to do this? the async should handle it, right?
+    props.setNewLink(""); // should I wait to do this? the async should handle it, right?
   };
 
   return (
-    <div>
+    <div className="link-input">
       <h2>Paste your link below</h2>
-      <input value={newLink} onChange={(e) => setNewLink(e.target.value)} />
+      <p>
+        <i>Please use the format https://...</i>
+      </p>
+      <input
+        value={newLink}
+        onChange={(e) => props.setNewLink(e.target.value)}
+      />
       <p> </p>
       <button disabled={!newLink} onClick={handleClick}>
         Shorten
       </button>
+      {shortenedLink && (
+        <p>
+          Success! Your new shortened link is:{" "}
+          <a href={shortenedLink}>{shortenedLink}</a>
+        </p>
+      )}
     </div>
   );
 }
