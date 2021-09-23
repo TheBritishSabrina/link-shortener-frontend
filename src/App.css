@@ -1,0 +1,36 @@
+:root {
+  /* lol these could definitely be more consistent */
+  --link-color: rgb(22, 133, 153);
+  --background-color: #ffffff;
+  --text-color: black;
+}
+
+.App {
+  text-align: center;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.App-header {
+  height: 30vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 1vmin);
+}
+
+.link {
+  color: var(--link-color);
+}
+
+a {
+  color: var(--link-color);
+}
+
+br {
+  height: 10vh;
+}
+
+ul {
+  list-style-type: none;
+}
